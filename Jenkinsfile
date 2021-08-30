@@ -9,7 +9,7 @@ node {
    stage('SSH to host') {
     withCredentials([sshUserPrivateKey(credentialsId: 'privateKeyHost', keyFileVariable: 'key', passphraseVariable: 'passphrase', usernameVariable: 'user')]) {
        sh"""
-       ssh $user@188.166.87.169 -i $key
+       ssh -tt $user@188.166.87.169 -i $key
        echo "Login to Host successfull"
        whoami
        """
