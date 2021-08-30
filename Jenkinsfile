@@ -1,4 +1,7 @@
 node {
+   triggers {
+        cron('0 0,12 * * *')
+    }
    def commit_id
    stage('Preparation') {
      checkout scm
