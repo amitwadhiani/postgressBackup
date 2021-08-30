@@ -15,5 +15,11 @@ node {
        """
     }
   }
+  stage('Backup Postgress') {
+       sh"""
+       docker exec -t realworld_postgres pg_dumpall -c -U user > postgres_dump.sql
+       mv ./postgres_dump.sql /root/demoApp/postgress/backup/postgres_dump-${commit_id}-${env.BUILD_NUMBER}.sql
+       """
+  }
 }
 
