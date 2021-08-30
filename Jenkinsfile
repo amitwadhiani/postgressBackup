@@ -11,10 +11,11 @@ node {
        sh"""
        sshpass -p $pass ssh root@188.166.87.169
        echo "Login to Host successfull"
-       docker exec -t realworld_postgres pg_dumpall -c -U root > postgres_dump.sql
-       mv ./postgres_dump.sql /root/demoApp/postgress/backup/postgres_dump-${commit_id}-${env.BUILD_NUMBER}.sql
+       docker exec -t realworld_postgres pg_dumpall -c -U user > postgres_dump.sql
+       mv ./postgres_dump.sql /var/jenkins_home/postgressBackup/postgres_dump-${commit_id}-${env.BUILD_NUMBER}.sql
        """
     }
   }
+
 }
 
